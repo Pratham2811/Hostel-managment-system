@@ -5,10 +5,10 @@ const { protect, authorize } = require('../middleware/auth');
 const {
   getAllComplaints,
   getComplaintsByStatus,
-  getStudentComplaints,
+  getMyComplaints, // Changed from getStudentComplaints
   getComplaintById,
   createComplaint,
-  updateComplaintStatus,
+  updateComplaint, // Changed from updateComplaintStatus
   addComment,
   getComplaintStats,
   deleteComplaint
@@ -26,10 +26,10 @@ router.get('/status/:status', authorize('admin', 'staff'), getComplaintsByStatus
 // Get complaint statistics - Admin and Staff only
 router.get('/stats', authorize('admin', 'staff'), getComplaintStats);
 
-// Get student's complaints - Student only
-router.get('/student', authorize('student'), getStudentComplaints);
+// Get student's complaints - Student only (fixed function name)
+router.get('/student', authorize('student'), getMyComplaints);
 
-// Get complaint by ID - All roles (with access control in controller)
+// Get complaint by ID - All roles
 router.get('/:id', getComplaintById);
 
 // Create new complaint - Student only
@@ -39,32 +39,33 @@ router.post(
   [
     check('title', 'Title is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
-    check('category', 'Category is required').not().isEmpty(),
-    check('roomId', 'Room ID is required').not().isEmpty()
+    check('type', 'Type is required').not().isEmpty(), // Changed from category
+    check('priority', 'Priority is required').optional()
   ],
   createComplaint
 );
 
-// Update complaint status - Admin and Staff only
+// Update complaint - Admin and Staff only (fixed function name)
 router.put(
-  '/:id/status',
+  '/:id',
   authorize('admin', 'staff'),
   [
-    check('status', 'Status is required').not().isEmpty()
+    check('status', 'Status is required').optional(),
+    check('staffRemarks', 'Remarks must be a string').optional().isString()
   ],
-  updateComplaintStatus
+  updateComplaint
 );
 
-// Add comments to a complaint - All roles (with access control in controller)
+// Add comments to a complaint - All roles (fixed validation field)
 router.post(
   '/:id/comments',
   [
-    check('comment', 'Comment is required').not().isEmpty()
+    check('text', 'Comment text is required').not().isEmpty() // Changed from 'comment'
   ],
   addComment
 );
 
-// Delete a complaint - Admin and Owner only (with access control in controller)
+// Delete a complaint - Admin and Owner only
 router.delete('/:id', deleteComplaint);
 
 module.exports = router;

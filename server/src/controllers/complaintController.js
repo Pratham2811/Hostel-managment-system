@@ -428,7 +428,36 @@ exports.deleteComment = async (req, res) => {
         });
     }
 };
-
+// Get complaints by status
+exports.getComplaintsByStatus = async (req, res) => {
+    try {
+      // Check authorization
+      if (req.user.role !== 'admin' && req.user.role !== 'staff') {
+        return res.status(403).json({
+          success: false,
+          message: 'Not authorized to view complaints by status'
+        });
+      }
+  
+      const complaints = await Complaint.find({ status: req.params.status })
+        .populate('student', 'name email rollNumber hostelBlock roomNumber')
+        .populate('assignedTo', 'name email role')
+        .sort({ createdAt: -1 });
+  
+      res.status(200).json({
+        success: true,
+        count: complaints.length,
+        data: complaints
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        success: false,
+        message: 'Server Error',
+        error: error.message
+      });
+    }
+  };
 // Assign complaint to staff
 exports.assignComplaint = async (req, res) => {
     try {

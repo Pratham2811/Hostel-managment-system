@@ -11,12 +11,12 @@ const {
 const { protect, authorize } = require('../middleware/auth');
 
 // Include other resource routers
-const roomRouter = require('./rooms');
+const roomRouter = require('./room');
 
 const router = express.Router();
 
 // Re-route into other resource routers
-router.use('/:hostelId/rooms', roomRouter);
+router.use('/:hostelId/room', roomRouter);
 
 router.route('/')
   .get(getHostels)
