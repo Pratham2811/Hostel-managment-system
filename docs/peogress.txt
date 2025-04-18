@@ -1,0 +1,2704 @@
+
+Hostel Management System: Designing the ER Diagram
+Shared by Madane
+This is a copy of a chat between Claude and Madane. Shared snapshot may contain attachments and data not displayed here which may have altered Claude’s responses.
+
+see i have project about hostel managment There is three role Admin user which is person seeking hostels and persons which has hostel and show all info and vacncy about the hostels like Admin is there hostel person posts all info all required and it will go to admin then admin verify it after verfication hostel or any specific room is registered and then user will able to see it fetching usiner location we will sugesst hostels in that region and for if user wants to change the ciity we are ginig city dropdowns and filters to select the specific things about hostel any paymet integration should be there in user to hostel owner now i have to make it sclalable what i need to do and techstack needed for it and i have make this project wgile learaning
+
+Hostel Owner User Stories Hostel Owner Registration – As a hostel owner, I want to register an account so that I can list my hostels. Login & Authentication – As a hostel owner, I want to log in securely so that I can access my dashboard. Add Hostel Details – As a hostel owner, I want to add my hostel details (name, address, price, facilities, etc.) so that users can view them. Edit Hostel Details – As a hostel owner, I want to update my hostel information so that I can keep it accurate. Manage Vacancies – As a hostel owner, I want to update available vacancies so that users get real-time availability. View Booking Requests – As a hostel owner, I want to see booking requests from users so that I can confirm or reject them. Payment Integration – As a hostel owner, I want to receive payments from users so that I can manage my revenue. Track Payment History – As a hostel owner, I want to see a history of payments received so that I can track earnings. View Reviews & Ratings – As a hostel owner, I want to see reviews and ratings from users so that I can improve my services. Delete Hostel Listing – As a hostel owner, I want to remove my hostel listing if I no longer want to rent it out. Admin User Stories Admin Login – As an admin, I want to log in securely so that I can manage hostel approvals. Approve Hostel Listings – As an admin, I want to approve hostel listings so that only verified hostels go live. Reject Hostel Listings – As an admin, I want to reject hostel listings if they don’t meet the criteria. View All Hostels – As an admin, I want to see all registered hostels so that I can manage them. Manage User Accounts – As an admin, I want to disable or remove accounts that violate policies. Handle Complaints – As an admin, I want to review and take action on user complaints about hostels or hostel owners. View Payments & Transactions – As an admin, I want to track payments to ensure fair transactions. Monitor System Analytics – As an admin, I want to see platform usage statistics to track growth and engagement. Send Notifications – As an admin, I want to notify hostel owners or users in case of policy violations or important updates. User (Guest) User Stories User Registration & Login – As a user, I want to register and log in so that I can search for hostels. Search for Hostels – As a user, I want to search for hostels based on location and filters so that I can find suitable options. Apply Filters – As a user, I want to apply filters like price, amenities, gender preference, etc., so that I get relevant results. View Hostel Details – As a user, I want to see hostel details, photos, and reviews so that I can make an informed choice. Check Availability – As a user, I want to check real-time vacancy status so that I don’t apply for full hostels. Book a Hostel – As a user, I want to send a booking request to the hostel owner so that I can reserve a spot. Make Payments – As a user, I want to pay online securely so that I can confirm my booking. View Booking History – As a user, I want to see my past and current hostel bookings. Cancel Booking – As a user, I want to cancel a booking if my plans change. Rate & Review Hostels – As a user, I want to leave ratings and reviews so that others can make informed decisions. this is the stories Lets make ER diagram i dont know how if you teach me i can how to think that to create er diagram how to build intution
+
+now give me total roadmap what to do when and how
+
+Hostel Management System: Comprehensive Roadmap
+I'll help you build a scalable hostel management system with the right tech stack and approach. Let's break this down into manageable phases.
+
+Phase 1: Planning and Architecture
+ER Diagram Development
+Creating an ER diagram helps you visualize your database relationships. Here's how to approach it:
+
+Identify key entities: From your user stories, I can see:
+Users (with roles: Admin, Hostel Owner, Guest)
+Hostels
+Rooms
+Bookings
+Reviews
+Payments
+Complaints
+Define relationships:
+Hostel Owner has many Hostels
+Hostel has many Rooms
+User makes many Bookings
+Booking relates to one Room
+User leaves many Reviews for Hostels
+User makes Payments for Bookings
+Determine attributes for each entity (e.g., User would have name, email, password, role, etc.)
+Tech Stack Selection
+For a scalable hostel management system:
+
+Backend:
+
+Node.js with Express (scalable and fast)
+MongoDB (flexible document database) or PostgreSQL (relational database)
+Redis for caching (improves performance)
+Frontend:
+
+React.js (component-based UI library)
+Redux for state management
+Material UI or Tailwind CSS for responsive design
+Infrastructure:
+
+Docker for containerization
+Kubernetes for orchestration (when you scale further)
+AWS/Azure/GCP for cloud hosting
+Additional Services:
+
+Payment gateway: Stripe or Razorpay
+Maps API: Google Maps for location features
+Auth: JWT or OAuth for authentication
+Cloudinary or AWS S3 for image storage
+Phase 2: Setup Development Environment
+Set up Git repository
+Configure development environments
+Set up CI/CD pipeline
+Create project structure
+Phase 3: Database Design & Implementation
+Create database schema based on ER diagram
+Set up MongoDB/PostgreSQL
+Implement data models
+Create database indexing for performance
+Phase 4: API Development
+Create RESTful API endpoints
+Implement authentication/authorization
+Create validation middleware
+Set up API documentation with Swagger
+Phase 5: Frontend Development
+Set up React project with routing
+Implement authentication UI
+Create dashboard layouts for each role
+Develop specific features based on user stories
+Phase 6: Feature Implementation
+Auth System
+Registration/Login for all roles
+Role-based access control
+Hostel Owner Features
+Hostel registration form
+Dashboard for managing listings
+Vacancy management interface
+Booking request handling
+Payment receiving system
+Admin Features
+Hostel verification workflow
+User management system
+Analytics dashboard
+Complaint handling system
+User Features
+Search functionality with filters
+Location-based recommendations
+Booking process
+Payment system
+Review and rating system
+Phase 7: Integration & Testing
+Integrate payment gateway
+Implement map integration for location features
+Unit and integration testing
+User acceptance testing
+Phase 8: Deployment & Scaling
+Deploy to cloud platform
+Set up monitoring
+Configure auto-scaling
+Implement CDN for static assets
+Implementation Timeline
+Weeks 1-2: Planning, Architecture, Environment Setup
+Weeks 3-4: Database Design, Basic API Development
+Weeks 5-8: Core Feature Implementation (Auth, Basic CRUD)
+Weeks 9-12: Advanced Features (Search, Payments, Maps)
+Weeks 13-14: Testing and Bug Fixing
+Weeks 15-16: Deployment and Optimization
+
+Scalability Considerations
+Database Sharding: As your user base grows, consider sharding your database
+Microservices: Break down your application into microservices (Auth, Bookings, Payments)
+Caching: Implement Redis caching for frequently accessed data
+Load Balancing: Distribute traffic across multiple servers
+CDN: Use content delivery networks for static assets
+Async Processing: Use message queues (RabbitMQ, Kafka) for handling background tasks
+Learning Path
+If you're building this while learning:
+
+Start with a monolithic architecture before microservices
+Focus on one feature at a time
+Use Docker from the beginning to maintain consistency
+Implement automated testing early
+Document as you go
+Would you like me to elaborate on any specific part of this roadmap, such as starting with the ER diagram or specific technology implementation details?
+
+
+i going to make it with you help now wow and all thing with the help of you so lets start step by step from intializing project making repositeries and from phase 1
+
+I'll help you build this step by step from the very beginning. Let's start with Phase 1, focusing on planning and initializing the project.
+
+Phase 1: Planning and Setting Up Your Project
+1. Create a GitHub Repository
+First, let's create a GitHub repository to manage your code:
+
+Go to GitHub and create a new repository named "hostel-management-system"
+Initialize with a README.md file
+Add a .gitignore file for Node.js
+2. Set Up Project Structure
+Let's set up a basic monolithic structure that you can later expand:
+
+hostel-management-system/
+├── client/                    # Frontend React application
+├── server/                    # Backend Node.js application
+├── docs/                      # Documentation
+│   └── er-diagram.md          # We'll create this soon
+├── .gitignore
+├── README.md
+└── package.json
+3. Begin ER Diagram Design
+Before starting to code, let's create an ER diagram for your database. Based on the user stories, here's a simplified ER diagram that we'll refine:
+
+Main Entities:
+User
+id (PK)
+name
+email
+password (hashed)
+phone
+role (enum: 'admin', 'owner', 'guest')
+created_at
+updated_at
+Hostel
+id (PK)
+owner_id (FK to User)
+name
+description
+address
+city
+state
+country
+pincode
+total_rooms
+is_verified (boolean)
+verified_by (FK to User)
+created_at
+updated_at
+Room
+id (PK)
+hostel_id (FK to Hostel)
+room_number
+room_type (enum: 'single', 'double', 'dormitory')
+price
+capacity
+amenities (array/json)
+gender_preference (enum: 'male', 'female', 'any')
+is_available (boolean)
+created_at
+updated_at
+Booking
+id (PK)
+user_id (FK to User)
+room_id (FK to Room)
+check_in_date
+check_out_date
+status (enum: 'pending', 'confirmed', 'cancelled', 'completed')
+created_at
+updated_at
+Payment
+id (PK)
+booking_id (FK to Booking)
+amount
+transaction_id
+payment_method
+status (enum: 'pending', 'completed', 'failed', 'refunded')
+created_at
+updated_at
+Review
+id (PK)
+user_id (FK to User)
+hostel_id (FK to Hostel)
+rating (1-5)
+comment
+created_at
+updated_at
+Complaint
+id (PK)
+user_id (FK to User)
+hostel_id (FK to Hostel)
+subject
+description
+status (enum: 'pending', 'reviewing', 'resolved')
+created_at
+updated_at
+4. Initialize the Project
+Let's initialize your project. I'll guide you through setting up both the backend and frontend:
+
+Backend Setup (Node.js & Express):
+Create the server directory and initialize:
+bash
+mkdir -p hostel-management-system/server
+cd hostel-management-system/server
+npm init -y
+Install key dependencies:
+bash
+npm install express mongoose dotenv bcryptjs jsonwebtoken cors
+npm install --save-dev nodemon
+Create basic server structure:
+bash
+mkdir -p src/models src/controllers src/routes src/middleware src/config
+Create a basic server.js file:
+bash
+touch src/server.js
+Frontend Setup (React):
+Create React app:
+bash
+npx create-react-app client
+cd client
+Install key frontend dependencies:
+bash
+npm install axios react-router-dom redux react-redux redux-thunk @material-ui/core @material-ui/icons
+Now that we have our basic planning and setup completed, would you like to proceed with coding the initial server configuration or continue refining the ER diagram first?
+
+
+
+yes proceed
+
+Great! Let's start by implementing the initial server configuration.
+
+Setting Up the Server
+Let's create the basic server configuration files:
+
+1. Create server.js file
+Add this code to your src/server.js file:
+
+javascript
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config();
+
+// Initialize Express app
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes (will be added later)
+app.get('/', (req, res) => {
+  res.send('Hostel Management System API is running!');
+});
+
+// Database connection
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+2. Create .env file
+Create a .env file in the server directory:
+
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/hostel-management
+JWT_SECRET=your_jwt_secret_key_here
+NODE_ENV=development
+3. Update package.json
+Edit your server's package.json to add scripts:
+
+json
+"scripts": {
+  "start": "node src/server.js",
+  "dev": "nodemon src/server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+Setting Up Models
+Now, let's create the database models based on our ER diagram:
+
+1. User Model
+Create src/models/User.js:
+
+javascript
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: String,
+    required: true
+  },
+  role: {
+    type: String,
+    enum: ['admin', 'owner', 'guest'],
+    default: 'guest'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Hash password before saving
+UserSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
+  
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Method to check password
+UserSchema.methods.matchPassword = async function(enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('User', UserSchema);
+2. Hostel Model
+Create src/models/Hostel.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const HostelSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  },
+  state: {
+    type: String,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
+  pincode: {
+    type: String,
+    required: true
+  },
+  totalRooms: {
+    type: Number,
+    required: true
+  },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  verifiedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  },
+  images: [String]
+});
+
+module.exports = mongoose.model('Hostel', HostelSchema);
+3. Room Model
+Create src/models/Room.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const RoomSchema = new mongoose.Schema({
+  hostel: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Hostel',
+    required: true
+  },
+  roomNumber: {
+    type: String,
+    required: true
+  },
+  roomType: {
+    type: String,
+    enum: ['single', 'double', 'dormitory'],
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  capacity: {
+    type: Number,
+    required: true
+  },
+  amenities: {
+    type: [String],
+    default: []
+  },
+  genderPreference: {
+    type: String,
+    enum: ['male', 'female', 'any'],
+    default: 'any'
+  },
+  isAvailable: {
+    type: Boolean,
+    default: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  },
+  images: [String]
+});
+
+module.exports = mongoose.model('Room', RoomSchema);
+4. Booking Model
+Create src/models/Booking.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const BookingSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  room: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Room',
+    required: true
+  },
+  checkInDate: {
+    type: Date,
+    required: true
+  },
+  checkOutDate: {
+    type: Date,
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'confirmed', 'cancelled', 'completed'],
+    default: 'pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Booking', BookingSchema);
+5. Payment Model
+Create src/models/Payment.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const PaymentSchema = new mongoose.Schema({
+  booking: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Booking',
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true
+  },
+  transactionId: {
+    type: String,
+    required: true
+  },
+  paymentMethod: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'completed', 'failed', 'refunded'],
+    default: 'pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Payment', PaymentSchema);
+6. Review Model
+Create src/models/Review.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const ReviewSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  hostel: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Hostel',
+    required: true
+  },
+  rating: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5
+  },
+  comment: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Review', ReviewSchema);
+7. Complaint Model
+Create src/models/Complaint.js:
+
+javascript
+const mongoose = require('mongoose');
+
+const ComplaintSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  hostel: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Hostel',
+    required: true
+  },
+  subject: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'reviewing', 'resolved'],
+    default: 'pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Complaint', ComplaintSchema);
+Setting Up Middleware
+Now, let's create some essential middleware:
+
+1. Authentication Middleware
+Create src/middleware/auth.js:
+
+javascript
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+
+// Middleware to check if user is authenticated
+exports.protect = async (req, res, next) => {
+  let token;
+
+  // Check if token exists in headers
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  // Check if token exists
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
+  }
+
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Find user by id
+    req.user = await User.findById(decoded.id);
+    
+    if (!req.user) {
+      return res.status(401).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: 'Not authorized to access this route'
+    });
+  }
+};
+
+// Middleware to check if user has specified role
+exports.authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        success: false,
+        message: `User role '${req.user.role}' is not authorized to access this route`
+      });
+    }
+    next();
+  };
+};
+2. Error Handling Middleware
+Create src/middleware/errorHandler.js:
+
+javascript
+const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+
+  res.status(err.statusCode || 500).json({
+    success: false,
+    error: err.message || 'Server Error'
+  });
+};
+
+module.exports = errorHandler;
+Next Step
+Now that we have set up our models and middleware, the next steps would be:
+
+Create controllers for each entity
+Set up API routes
+Implement authentication endpoints
+Start working on the React frontend
+Would you like to continue with implementing controllers and routes next?
+
+
+
+yes
+
+Let's continue by implementing controllers and routes for our hostel management system.
+
+Setting Up Controllers
+First, let's create the controllers for each entity:
+
+1. Auth Controller
+Create src/controllers/authController.js:
+
+javascript
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+
+// Generate JWT token
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d'
+  });
+};
+
+// @desc    Register user
+// @route   POST /api/auth/register
+// @access  Public
+exports.register = async (req, res) => {
+  try {
+    const { name, email, password, phone, role } = req.body;
+
+    // Check if user already exists
+    const userExists = await User.findOne({ email });
+
+    if (userExists) {
+      return res.status(400).json({
+        success: false,
+        message: 'User already exists'
+      });
+    }
+
+    // Restrict creation of admin accounts
+    if (role === 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Admin accounts can only be created by other admins'
+      });
+    }
+
+    // Create user
+    const user = await User.create({
+      name,
+      email,
+      password,
+      phone,
+      role: role || 'guest' // Default to guest if no role specified
+    });
+
+    if (user) {
+      res.status(201).json({
+        success: true,
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          phone: user.phone,
+          role: user.role
+        },
+        token: generateToken(user._id)
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: 'Invalid user data'
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Login user
+// @route   POST /api/auth/login
+// @access  Public
+exports.login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Check if user exists
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+
+    // Check if password matches
+    const isMatch = await user.matchPassword(password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role
+      },
+      token: generateToken(user._id)
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get current user profile
+// @route   GET /api/auth/me
+// @access  Private
+exports.getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select('-password');
+    
+    res.status(200).json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+2. Hostel Controller
+Create src/controllers/hostelController.js:
+
+javascript
+const Hostel = require('../models/Hostel');
+const Room = require('../models/Room');
+
+// @desc    Create a new hostel
+// @route   POST /api/hostels
+// @access  Private (Owner only)
+exports.createHostel = async (req, res) => {
+  try {
+    // Add owner to req.body
+    req.body.owner = req.user._id;
+    
+    const hostel = await Hostel.create(req.body);
+
+    res.status(201).json({
+      success: true,
+      data: hostel
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all hostels
+// @route   GET /api/hostels
+// @access  Public
+exports.getHostels = async (req, res) => {
+  try {
+    // Build query
+    let query;
+    
+    // Copy req.query
+    const reqQuery = { ...req.query };
+    
+    // Fields to exclude
+    const removeFields = ['select', 'sort', 'page', 'limit'];
+    
+    // Loop over removeFields and delete them from reqQuery
+    removeFields.forEach(param => delete reqQuery[param]);
+    
+    // Create query string
+    let queryStr = JSON.stringify(reqQuery);
+    
+    // Create operators ($gt, $gte, etc)
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+    
+    // Finding resource
+    query = Hostel.find(JSON.parse(queryStr)).populate('owner', 'name email');
+    
+    // For user role guest, only show verified hostels
+    if (!req.user || req.user.role === 'guest') {
+      query = query.find({ isVerified: true });
+    }
+    
+    // Select Fields
+    if (req.query.select) {
+      const fields = req.query.select.split(',').join(' ');
+      query = query.select(fields);
+    }
+    
+    // Sort
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
+    
+    // Pagination
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const total = await Hostel.countDocuments();
+    
+    query = query.skip(startIndex).limit(limit);
+    
+    // Executing query
+    const hostels = await query;
+    
+    // Pagination result
+    const pagination = {};
+    
+    if (endIndex < total) {
+      pagination.next = {
+        page: page + 1,
+        limit
+      };
+    }
+    
+    if (startIndex > 0) {
+      pagination.prev = {
+        page: page - 1,
+        limit
+      };
+    }
+    
+    res.status(200).json({
+      success: true,
+      count: hostels.length,
+      pagination,
+      data: hostels
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get single hostel
+// @route   GET /api/hostels/:id
+// @access  Public
+exports.getHostel = async (req, res) => {
+  try {
+    const hostel = await Hostel.findById(req.params.id)
+      .populate('owner', 'name email')
+      .populate('verifiedBy', 'name');
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // If hostel is not verified and requester is not admin or owner, deny access
+    if (!hostel.isVerified && 
+        (!req.user || 
+        (req.user.role !== 'admin' && 
+        req.user._id.toString() !== hostel.owner._id.toString()))) {
+      return res.status(403).json({
+        success: false,
+        message: 'This hostel is pending verification'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: hostel
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Update hostel
+// @route   PUT /api/hostels/:id
+// @access  Private (Owner or Admin)
+exports.updateHostel = async (req, res) => {
+  try {
+    let hostel = await Hostel.findById(req.params.id);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // Make sure user is hostel owner or admin
+    if (hostel.owner.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to update this hostel'
+      });
+    }
+    
+    // If admin is verifying the hostel
+    if (req.user.role === 'admin' && req.body.isVerified !== undefined) {
+      req.body.verifiedBy = req.user._id;
+    }
+    
+    // Update hostel
+    hostel = await Hostel.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    
+    res.status(200).json({
+      success: true,
+      data: hostel
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Delete hostel
+// @route   DELETE /api/hostels/:id
+// @access  Private (Owner or Admin)
+exports.deleteHostel = async (req, res) => {
+  try {
+    const hostel = await Hostel.findById(req.params.id);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // Make sure user is hostel owner or admin
+    if (hostel.owner.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to delete this hostel'
+      });
+    }
+    
+    // Delete associated rooms first
+    await Room.deleteMany({ hostel: req.params.id });
+    
+    // Delete hostel
+    await hostel.remove();
+    
+    res.status(200).json({
+      success: true,
+      data: {}
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get hostels by owner
+// @route   GET /api/hostels/owner
+// @access  Private (Owner only)
+exports.getHostelsByOwner = async (req, res) => {
+  try {
+    const hostels = await Hostel.find({ owner: req.user._id });
+    
+    res.status(200).json({
+      success: true,
+      count: hostels.length,
+      data: hostels
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+3. Room Controller
+Create src/controllers/roomController.js:
+
+javascript
+const Room = require('../models/Room');
+const Hostel = require('../models/Hostel');
+
+// @desc    Create a new room
+// @route   POST /api/hostels/:hostelId/rooms
+// @access  Private (Owner only)
+exports.createRoom = async (req, res) => {
+  try {
+    req.body.hostel = req.params.hostelId;
+    
+    const hostel = await Hostel.findById(req.params.hostelId);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // Check if user is hostel owner
+    if (hostel.owner.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'User not authorized to add rooms to this hostel'
+      });
+    }
+    
+    const room = await Room.create(req.body);
+    
+    res.status(201).json({
+      success: true,
+      data: room
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all rooms
+// @route   GET /api/rooms
+// @access  Public
+exports.getRooms = async (req, res) => {
+  try {
+    let query;
+    
+    // Copy req.query
+    const reqQuery = { ...req.query };
+    
+    // Fields to exclude
+    const removeFields = ['select', 'sort', 'page', 'limit'];
+    
+    // Loop over removeFields and delete them from reqQuery
+    removeFields.forEach(param => delete reqQuery[param]);
+    
+    // Create query string
+    let queryStr = JSON.stringify(reqQuery);
+    
+    // Create operators ($gt, $gte, etc)
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+    
+    // Finding resource
+    query = Room.find(JSON.parse(queryStr)).populate({
+      path: 'hostel',
+      select: 'name address city isVerified',
+      populate: {
+        path: 'owner',
+        select: 'name email'
+      }
+    });
+    
+    // For user role guest, only show rooms from verified hostels
+    if (!req.user || req.user.role === 'guest') {
+      const verifiedHostels = await Hostel.find({ isVerified: true }).select('_id');
+      const verifiedHostelIds = verifiedHostels.map(hostel => hostel._id);
+      query = query.find({ hostel: { $in: verifiedHostelIds } });
+    }
+    
+    // Select Fields
+    if (req.query.select) {
+      const fields = req.query.select.split(',').join(' ');
+      query = query.select(fields);
+    }
+    
+    // Sort
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
+    
+    // Pagination
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 25;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const total = await Room.countDocuments();
+    
+    query = query.skip(startIndex).limit(limit);
+    
+    // Executing query
+    const rooms = await query;
+    
+    // Pagination result
+    const pagination = {};
+    
+    if (endIndex < total) {
+      pagination.next = {
+        page: page + 1,
+        limit
+      };
+    }
+    
+    if (startIndex > 0) {
+      pagination.prev = {
+        page: page - 1,
+        limit
+      };
+    }
+    
+    res.status(200).json({
+      success: true,
+      count: rooms.length,
+      pagination,
+      data: rooms
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get rooms for a hostel
+// @route   GET /api/hostels/:hostelId/rooms
+// @access  Public
+exports.getHostelRooms = async (req, res) => {
+  try {
+    const hostel = await Hostel.findById(req.params.hostelId);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // If hostel is not verified and requester is not admin or owner, deny access
+    if (!hostel.isVerified && 
+        (!req.user || 
+        (req.user.role !== 'admin' && 
+        req.user._id.toString() !== hostel.owner.toString()))) {
+      return res.status(403).json({
+        success: false,
+        message: 'This hostel is pending verification'
+      });
+    }
+    
+    const rooms = await Room.find({ hostel: req.params.hostelId });
+    
+    res.status(200).json({
+      success: true,
+      count: rooms.length,
+      data: rooms
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get single room
+// @route   GET /api/rooms/:id
+// @access  Public
+exports.getRoom = async (req, res) => {
+  try {
+    const room = await Room.findById(req.params.id).populate({
+      path: 'hostel',
+      select: 'name address city isVerified',
+      populate: {
+        path: 'owner',
+        select: 'name email'
+      }
+    });
+    
+    if (!room) {
+      return res.status(404).json({
+        success: false,
+        message: 'Room not found'
+      });
+    }
+    
+    // If hostel is not verified and requester is not admin or owner, deny access
+    if (!room.hostel.isVerified && 
+        (!req.user || 
+        (req.user.role !== 'admin' && 
+        req.user._id.toString() !== room.hostel.owner._id.toString()))) {
+      return res.status(403).json({
+        success: false,
+        message: 'This hostel is pending verification'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: room
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Update room
+// @route   PUT /api/rooms/:id
+// @access  Private (Owner or Admin)
+exports.updateRoom = async (req, res) => {
+  try {
+    let room = await Room.findById(req.params.id);
+    
+    if (!room) {
+      return res.status(404).json({
+        success: false,
+        message: 'Room not found'
+      });
+    }
+    
+    // Get hostel to check ownership
+    const hostel = await Hostel.findById(room.hostel);
+    
+    // Make sure user is hostel owner or admin
+    if (hostel.owner.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to update this room'
+      });
+    }
+    
+    room = await Room.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    
+    res.status(200).json({
+      success: true,
+      data: room
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Delete room
+// @route   DELETE /api/rooms/:id
+// @access  Private (Owner or Admin)
+exports.deleteRoom = async (req, res) => {
+  try {
+    const room = await Room.findById(req.params.id);
+    
+    if (!room) {
+      return res.status(404).json({
+        success: false,
+        message: 'Room not found'
+      });
+    }
+    
+    // Get hostel to check ownership
+    const hostel = await Hostel.findById(room.hostel);
+    
+    // Make sure user is hostel owner or admin
+    if (hostel.owner.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to delete this room'
+      });
+    }
+    
+    await room.remove();
+    
+    res.status(200).json({
+      success: true,
+      data: {}
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+Setting Up Routes
+Now, let's create the routes for our APIs:
+
+1. Auth Routes
+Create src/routes/auth.js:
+
+javascript
+const express = require('express');
+const { register, login, getMe } = require('../controllers/authController');
+const { protect } = require('../middleware/auth');
+
+const router = express.Router();
+
+router.post('/register', register);
+router.post('/login', login);
+router.get('/me', protect, getMe);
+
+module.exports = router;
+2. Hostel Routes
+Create src/routes/hostels.js:
+
+javascript
+const express = require('express');
+const {
+  getHostels,
+  getHostel,
+  createHostel,
+  updateHostel,
+  deleteHostel,
+  getHostelsByOwner
+} = require('../controllers/hostelController');
+
+const { protect, authorize } = require('../middleware/auth');
+
+// Include other resource routers
+const roomRouter = require('./rooms');
+
+const router = express.Router();
+
+// Re-route into other resource routers
+router.use('/:hostelId/rooms', roomRouter);
+
+router.route('/')
+  .get(getHostels)
+  .post(protect, authorize('owner'), createHostel);
+
+router.route('/owner')
+  .get(protect, authorize('owner'), getHostelsByOwner);
+
+router.route('/:id')
+  .get(getHostel)
+  .put(protect, authorize('admin', 'owner'), updateHostel)
+  .delete(protect, authorize('admin', 'owner'), deleteHostel);
+
+module.exports = router;
+3. Room Routes
+Create src/routes/rooms.js:
+
+javascript
+const express = require('express');
+const {
+  getRooms,
+  getRoom,
+  createRoom,
+  updateRoom,
+  deleteRoom,
+  getHostelRooms
+} = require('../controllers/roomController');
+
+const { protect, authorize } = require('../middleware/auth');
+
+const router = express.Router({ mergeParams: true });
+
+router.route('/')
+  .get(getHostelRooms)
+  .post(protect, authorize('owner'), createRoom);
+
+router.route('/:id')
+  .get(getRoom)
+  .put(protect, authorize('admin', 'owner'), updateRoom)
+  .delete(protect, authorize('admin', 'owner'), deleteRoom);
+
+module.exports = router;
+4. Update server.js to include routes
+Now, let's update the src/server.js file to include our routes:
+
+javascript
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const errorHandler = require('./middleware/errorHandler');
+
+// Import routes
+const authRoutes = require('./routes/auth');
+const hostelRoutes = require('./routes/hostels');
+const roomRoutes = require('./routes/rooms');
+
+// Load environment variables
+dotenv.config();
+
+// Initialize Express app
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/api/hostels', hostelRoutes);
+app.use('/api/rooms', roomRoutes);
+
+// Base route
+app.get('/', (req, res) => {
+  res.send('Hostel Management System API is running!');
+});
+
+// Error handler middleware
+app.use(errorHandler);
+
+// Database connection
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+Next Steps
+So far, we've implemented:
+
+Database models for all entities
+Authentication middleware
+Error handling middleware
+Controllers for auth, hostels, and rooms
+Routes for auth, hostels, and rooms
+Next, we should:
+
+Implement controllers for bookings, payments, reviews, and complaints
+Create routes for these controllers
+Set up file uploads for hostel and room images
+Start building the React frontend
+Would you like to continue with implementing the remaining controllers and routes, or would you prefer to start working on the frontend setup?
+
+
+
+yes
+
+Let's continue by implementing the remaining controllers and routes for our hostel management system.
+
+Setting Up Remaining Controllers
+1. Booking Controller
+Create src/controllers/bookingController.js:
+
+javascript
+const Booking = require('../models/Booking');
+const Room = require('../models/Room');
+const Hostel = require('../models/Hostel');
+
+// @desc    Create a new booking
+// @route   POST /api/bookings
+// @access  Private (Guest only)
+exports.createBooking = async (req, res) => {
+  try {
+    // Add user ID to req.body
+    req.body.user = req.user._id;
+    
+    // Check if room exists
+    const room = await Room.findById(req.body.room);
+    
+    if (!room) {
+      return res.status(404).json({
+        success: false,
+        message: 'Room not found'
+      });
+    }
+    
+    // Check if room is available
+    if (!room.isAvailable) {
+      return res.status(400).json({
+        success: false,
+        message: 'Room is not available for booking'
+      });
+    }
+    
+    // Check if dates are valid
+    const checkInDate = new Date(req.body.checkInDate);
+    const checkOutDate = new Date(req.body.checkOutDate);
+    
+    if (checkInDate >= checkOutDate) {
+      return res.status(400).json({
+        success: false,
+        message: 'Check-out date must be after check-in date'
+      });
+    }
+    
+    // Check if room is already booked for the requested dates
+    const existingBooking = await Booking.findOne({
+      room: req.body.room,
+      status: { $in: ['pending', 'confirmed'] },
+      $or: [
+        {
+          checkInDate: { $lte: checkOutDate },
+          checkOutDate: { $gte: checkInDate }
+        }
+      ]
+    });
+    
+    if (existingBooking) {
+      return res.status(400).json({
+        success: false,
+        message: 'Room is already booked for the requested dates'
+      });
+    }
+    
+    // Create booking
+    const booking = await Booking.create(req.body);
+    
+    res.status(201).json({
+      success: true,
+      data: booking
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all bookings
+// @route   GET /api/bookings
+// @access  Private (Admin only)
+exports.getBookings = async (req, res) => {
+  try {
+    let query;
+    
+    // If user is admin, get all bookings
+    if (req.user.role === 'admin') {
+      query = Booking.find().populate({
+        path: 'room',
+        select: 'roomNumber roomType price',
+        populate: {
+          path: 'hostel',
+          select: 'name city'
+        }
+      }).populate({
+        path: 'user',
+        select: 'name email phone'
+      });
+    } else {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view all bookings'
+      });
+    }
+    
+    // Pagination
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const total = await Booking.countDocuments();
+    
+    query = query.skip(startIndex).limit(limit).sort('-createdAt');
+    
+    // Executing query
+    const bookings = await query;
+    
+    // Pagination result
+    const pagination = {};
+    
+    if (endIndex < total) {
+      pagination.next = {
+        page: page + 1,
+        limit
+      };
+    }
+    
+    if (startIndex > 0) {
+      pagination.prev = {
+        page: page - 1,
+        limit
+      };
+    }
+    
+    res.status(200).json({
+      success: true,
+      count: bookings.length,
+      pagination,
+      data: bookings
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get user bookings
+// @route   GET /api/bookings/me
+// @access  Private
+exports.getUserBookings = async (req, res) => {
+  try {
+    const bookings = await Booking.find({ user: req.user._id })
+      .populate({
+        path: 'room',
+        select: 'roomNumber roomType price',
+        populate: {
+          path: 'hostel',
+          select: 'name city'
+        }
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: bookings.length,
+      data: bookings
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get owner bookings
+// @route   GET /api/bookings/owner
+// @access  Private (Owner only)
+exports.getOwnerBookings = async (req, res) => {
+  try {
+    // Get owner's hostels
+    const hostels = await Hostel.find({ owner: req.user._id });
+    const hostelIds = hostels.map(hostel => hostel._id);
+    
+    // Get all rooms belonging to these hostels
+    const rooms = await Room.find({ hostel: { $in: hostelIds } });
+    const roomIds = rooms.map(room => room._id);
+    
+    // Get all bookings for these rooms
+    const bookings = await Booking.find({ room: { $in: roomIds } })
+      .populate({
+        path: 'room',
+        select: 'roomNumber roomType price',
+        populate: {
+          path: 'hostel',
+          select: 'name city'
+        }
+      })
+      .populate({
+        path: 'user',
+        select: 'name email phone'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: bookings.length,
+      data: bookings
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get single booking
+// @route   GET /api/bookings/:id
+// @access  Private
+exports.getBooking = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id)
+      .populate({
+        path: 'room',
+        select: 'roomNumber roomType price',
+        populate: {
+          path: 'hostel',
+          select: 'name city owner',
+          populate: {
+            path: 'owner',
+            select: 'name email'
+          }
+        }
+      })
+      .populate({
+        path: 'user',
+        select: 'name email phone'
+      });
+    
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+    
+    // Make sure user is admin or owns the booking or is the hostel owner
+    if (req.user.role !== 'admin' && 
+        booking.user._id.toString() !== req.user._id.toString() && 
+        booking.room.hostel.owner._id.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view this booking'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: booking
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Update booking status
+// @route   PUT /api/bookings/:id
+// @access  Private (Owner or Admin or Guest who made booking)
+exports.updateBooking = async (req, res) => {
+  try {
+    let booking = await Booking.findById(req.params.id);
+    
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+    
+    const room = await Room.findById(booking.room).populate({
+      path: 'hostel',
+      select: 'owner'
+    });
+    
+    // Check authorization based on the update being made
+    if (req.body.status) {
+      // Status updates:
+      // - Owner can confirm or reject bookings
+      // - Guest can only cancel their own booking
+      // - Admin can update any booking status
+      
+      if (req.user.role === 'owner') {
+        // Owner can only update bookings for their hostel
+        if (room.hostel.owner.toString() !== req.user._id.toString()) {
+          return res.status(403).json({
+            success: false,
+            message: 'Not authorized to update this booking'
+          });
+        }
+        
+        // Owner can only confirm or reject bookings
+        if (!['confirmed', 'cancelled'].includes(req.body.status)) {
+          return res.status(400).json({
+            success: false,
+            message: 'Owner can only confirm or reject bookings'
+          });
+        }
+      } else if (req.user.role === 'guest') {
+        // Guest can only cancel their own booking
+        if (booking.user.toString() !== req.user._id.toString()) {
+          return res.status(403).json({
+            success: false,
+            message: 'Not authorized to update this booking'
+          });
+        }
+        
+        if (req.body.status !== 'cancelled') {
+          return res.status(400).json({
+            success: false,
+            message: 'Guest can only cancel bookings'
+          });
+        }
+      }
+    }
+    
+    booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    
+    res.status(200).json({
+      success: true,
+      data: booking
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Delete booking
+// @route   DELETE /api/bookings/:id
+// @access  Private (Admin only)
+exports.deleteBooking = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+    
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+    
+    // Only admin can delete bookings
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to delete bookings'
+      });
+    }
+    
+    await booking.remove();
+    
+    res.status(200).json({
+      success: true,
+      data: {}
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+2. Payment Controller
+Create src/controllers/paymentController.js:
+
+javascript
+const Payment = require('../models/Payment');
+const Booking = require('../models/Booking');
+const Room = require('../models/Room');
+
+// @desc    Create a new payment
+// @route   POST /api/payments
+// @access  Private (Guest only)
+exports.createPayment = async (req, res) => {
+  try {
+    // Check if booking exists
+    const booking = await Booking.findById(req.body.booking).populate({
+      path: 'room',
+      select: 'price'
+    });
+    
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+    
+    // Check if user owns the booking
+    if (booking.user.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to make payment for this booking'
+      });
+    }
+    
+    // Check if payment has already been made
+    const existingPayment = await Payment.findOne({ booking: req.body.booking });
+    
+    if (existingPayment) {
+      return res.status(400).json({
+        success: false,
+        message: 'Payment already exists for this booking'
+      });
+    }
+    
+    // Calculate number of days for the booking
+    const checkInDate = new Date(booking.checkInDate);
+    const checkOutDate = new Date(booking.checkOutDate);
+    const days = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+    
+    // Calculate total amount
+    const totalAmount = days * booking.room.price;
+    
+    // Create payment
+    // In a real application, you would integrate with a payment gateway here
+    // For now, we're just creating a payment record
+    const payment = await Payment.create({
+      booking: req.body.booking,
+      amount: totalAmount,
+      transactionId: 'TRANS_' + Math.random().toString(36).substring(2, 15),
+      paymentMethod: req.body.paymentMethod,
+      status: 'completed'  // Assuming payment is successful for now
+    });
+    
+    // Update booking status to confirmed
+    booking.status = 'confirmed';
+    await booking.save();
+    
+    res.status(201).json({
+      success: true,
+      data: payment
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all payments
+// @route   GET /api/payments
+// @access  Private (Admin only)
+exports.getPayments = async (req, res) => {
+  try {
+    let query;
+    
+    // If user is admin, get all payments
+    if (req.user.role === 'admin') {
+      query = Payment.find().populate({
+        path: 'booking',
+        populate: [
+          {
+            path: 'user',
+            select: 'name email'
+          },
+          {
+            path: 'room',
+            select: 'roomNumber roomType',
+            populate: {
+              path: 'hostel',
+              select: 'name city'
+            }
+          }
+        ]
+      });
+    } else {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view all payments'
+      });
+    }
+    
+    // Pagination
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const total = await Payment.countDocuments();
+    
+    query = query.skip(startIndex).limit(limit).sort('-createdAt');
+    
+    // Executing query
+    const payments = await query;
+    
+    // Pagination result
+    const pagination = {};
+    
+    if (endIndex < total) {
+      pagination.next = {
+        page: page + 1,
+        limit
+      };
+    }
+    
+    if (startIndex > 0) {
+      pagination.prev = {
+        page: page - 1,
+        limit
+      };
+    }
+    
+    res.status(200).json({
+      success: true,
+      count: payments.length,
+      pagination,
+      data: payments
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get user payments
+// @route   GET /api/payments/me
+// @access  Private
+exports.getUserPayments = async (req, res) => {
+  try {
+    // Get user's bookings
+    const bookings = await Booking.find({ user: req.user._id });
+    const bookingIds = bookings.map(booking => booking._id);
+    
+    // Get payments for these bookings
+    const payments = await Payment.find({ booking: { $in: bookingIds } })
+      .populate({
+        path: 'booking',
+        populate: {
+          path: 'room',
+          select: 'roomNumber roomType',
+          populate: {
+            path: 'hostel',
+            select: 'name city'
+          }
+        }
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: payments.length,
+      data: payments
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get owner payments
+// @route   GET /api/payments/owner
+// @access  Private (Owner only)
+exports.getOwnerPayments = async (req, res) => {
+  try {
+    // Get hostel IDs owned by user
+    const hostels = await Hostel.find({ owner: req.user._id });
+    const hostelIds = hostels.map(hostel => hostel._id);
+    
+    // Get room IDs in these hostels
+    const rooms = await Room.find({ hostel: { $in: hostelIds } });
+    const roomIds = rooms.map(room => room._id);
+    
+    // Get booking IDs for these rooms
+    const bookings = await Booking.find({ room: { $in: roomIds } });
+    const bookingIds = bookings.map(booking => booking._id);
+    
+    // Get payments for these bookings
+    const payments = await Payment.find({ booking: { $in: bookingIds } })
+      .populate({
+        path: 'booking',
+        populate: [
+          {
+            path: 'user',
+            select: 'name email'
+          },
+          {
+            path: 'room',
+            select: 'roomNumber roomType',
+            populate: {
+              path: 'hostel',
+              select: 'name city'
+            }
+          }
+        ]
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: payments.length,
+      data: payments
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get single payment
+// @route   GET /api/payments/:id
+// @access  Private
+exports.getPayment = async (req, res) => {
+  try {
+    const payment = await Payment.findById(req.params.id).populate({
+      path: 'booking',
+      populate: [
+        {
+          path: 'user',
+          select: 'name email'
+        },
+        {
+          path: 'room',
+          select: 'roomNumber roomType',
+          populate: {
+            path: 'hostel',
+            select: 'name city owner',
+            populate: {
+              path: 'owner',
+              select: 'name email'
+            }
+          }
+        }
+      ]
+    });
+    
+    if (!payment) {
+      return res.status(404).json({
+        success: false,
+        message: 'Payment not found'
+      });
+    }
+    
+    // Check authorization
+    const booking = payment.booking;
+    
+    // Allow access if: user is admin, or user made the booking, or user owns the hostel
+    if (req.user.role !== 'admin' && 
+        booking.user._id.toString() !== req.user._id.toString() && 
+        booking.room.hostel.owner._id.toString() !== req.user._id.toString()) {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view this payment'
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: payment
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+3. Review Controller
+Create src/controllers/reviewController.js:
+
+javascript
+const Review = require('../models/Review');
+const Hostel = require('../models/Hostel');
+const Booking = require('../models/Booking');
+
+// @desc    Create a new review
+// @route   POST /api/hostels/:hostelId/reviews
+// @access  Private (Guest only)
+exports.createReview = async (req, res) => {
+  try {
+    req.body.hostel = req.params.hostelId;
+    req.body.user = req.user._id;
+    
+    // Check if hostel exists
+    const hostel = await Hostel.findById(req.params.hostelId);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // Check if user has booked this hostel before
+    const room = await Room.find({ hostel: req.params.hostelId }).select('_id');
+    const roomIds = room.map(r => r._id);
+    
+    const userBooking = await Booking.findOne({
+      user: req.user._id,
+      room: { $in: roomIds },
+      status: 'completed'
+    });
+    
+    if (!userBooking && req.user.role !== 'admin') {
+      return res.status(400).json({
+        success: false,
+        message: 'You can only review hostels you have stayed in'
+      });
+    }
+    
+    // Check if user has already reviewed this hostel
+    const existingReview = await Review.findOne({
+      hostel: req.params.hostelId,
+      user: req.user._id
+    });
+    
+    if (existingReview) {
+      return res.status(400).json({
+        success: false,
+        message: 'You have already reviewed this hostel'
+      });
+    }
+    
+    const review = await Review.create(req.body);
+    
+    res.status(201).json({
+      success: true,
+      data: review
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get reviews for a hostel
+// @route   GET /api/hostels/:hostelId/reviews
+// @access  Public
+exports.getHostelReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({ hostel: req.params.hostelId })
+      .populate({
+        path: 'user',
+        select: 'name'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all reviews
+// @route   GET /api/reviews
+// @access  Private (Admin only)
+exports.getReviews = async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view all reviews'
+      });
+    }
+    
+    const reviews = await Review.find()
+      .populate({
+        path: 'user',
+        select: 'name'
+      })
+      .populate({
+        path: 'hostel',
+        select: 'name city'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get user's reviews
+// @route   GET /api/reviews/me
+// @access  Private
+exports.getUserReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find({ user: req.user._id })
+      .populate({
+        path: 'hostel',
+        select: 'name city'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get reviews for owner's hostels
+// @route   GET /api/reviews/owner
+// @access  Private (Owner only)
+exports.getOwnerHostelReviews = async (req, res) => {
+  try {
+    // Get all hostels owned by the user
+    const hostels = await Hostel.find({ owner: req.user._id });
+    const hostelIds = hostels.map(hostel => hostel._id);
+    
+    // Get all reviews for these hostels
+    const reviews = await Review.find({ hostel: { $in: hostelIds } })
+      .populate({
+        path: 'user',
+        select: 'name'
+      })
+      .populate({
+        path: 'hostel',
+        select: 'name city'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: reviews.length,
+      data: reviews
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Update review
+// @route   PUT /api/reviews/:id
+// @access  Private
+exports.updateReview = async (req, res) => {
+  try {
+    let review = await Review.findById(req.params.id);
+    
+    if (!review) {
+      return res.status(404).json({
+        success: false,
+        message: 'Review not found'
+      });
+    }
+    
+    // Make sure user is review owner or admin
+    if (review.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to update this review'
+      });
+    }
+    
+    review = await Review.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+    
+    res.status(200).json({
+      success: true,
+      data: review
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Delete review
+// @route   DELETE /api/reviews/:id
+// @access  Private
+exports.deleteReview = async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+    
+    if (!review) {
+      return res.status(404).json({
+        success: false,
+        message: 'Review not found'
+      });
+    }
+    
+    // Make sure user is review owner or admin
+    if (review.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to delete this review'
+      });
+    }
+    
+    await review.remove();
+    
+    res.status(200).json({
+      success: true,
+      data: {}
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+4. Complaint Controller
+Create src/controllers/complaintController.js:
+
+javascript
+const Complaint = require('../models/Complaint');
+const Hostel = require('../models/Hostel');
+const Booking = require('../models/Booking');
+const Room = require('../models/Room');
+
+// @desc    Create a new complaint
+// @route   POST /api/hostels/:hostelId/complaints
+// @access  Private (Guest only)
+exports.createComplaint = async (req, res) => {
+  try {
+    req.body.hostel = req.params.hostelId;
+    req.body.user = req.user._id;
+    
+    // Check if hostel exists
+    const hostel = await Hostel.findById(req.params.hostelId);
+    
+    if (!hostel) {
+      return res.status(404).json({
+        success: false,
+        message: 'Hostel not found'
+      });
+    }
+    
+    // Check if user has booked this hostel before
+    const rooms = await Room.find({ hostel: req.params.hostelId }).select('_id');
+    const roomIds = rooms.map(room => room._id);
+    
+    const userBooking = await Booking.findOne({
+      user: req.user._id,
+      room: { $in: roomIds }
+    });
+    
+    if (!userBooking && req.user.role !== 'admin') {
+      return res.status(400).json({
+        success: false,
+        message: 'You can only submit complaints for hostels you have booked'
+      });
+    }
+    
+    const complaint = await Complaint.create(req.body);
+    
+    res.status(201).json({
+      success: true,
+      data: complaint
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get all complaints
+// @route   GET /api/complaints
+// @access  Private (Admin only)
+exports.getComplaints = async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Not authorized to view all complaints'
+      });
+    }
+    
+    let query = Complaint.find()
+      .populate({
+        path: 'user',
+        select: 'name email'
+      })
+      .populate({
+        path: 'hostel',
+        select: 'name city owner',
+        populate: {
+          path: 'owner',
+          select: 'name email'
+        }
+      });
+    
+    // Filter by status if provided
+    if (req.query.status) {
+      query = query.find({ status: req.query.status });
+    }
+    
+    const complaints = await query.sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: complaints.length,
+      data: complaints
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+// @desc    Get user's complaints
+// @route   GET /api/complaints/me
+// @access  Private
+exports.getUserComplaints = async (req, res) => {
+  try {
+    const complaints = await Complaint.find({ user: req.user._id })
+      .populate({
+        path: 'hostel',
+        select: 'name city'
+      })
+      .sort('-createdAt');
+    
+    res.status(200).json({
+      success: true,
+      count: complaints.length,
+      data: complaints
+    });
+  } catch (error) {
+    res.status(500).json
+
+
