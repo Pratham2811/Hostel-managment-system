@@ -1,26 +1,15 @@
+// components/dashboard/DashboardStats.jsx
 import React from 'react';
 
-const DashboardStats = ({ totalHostels, totalBookings, totalComplaints, totalReviews }) => {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div className="bg-white shadow-md rounded-lg p-4">
-        <h3 className="text-lg font-bold text-gray-700">Total Hostels</h3>
-        <p className="text-2xl text-blue-500">{totalHostels}</p>
+const DashboardStats = ({ stats }) => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+    {stats.map(({ label, value }) => (
+      <div key={label} className="p-4 bg-white rounded-xl shadow flex flex-col items-center">
+        <span className="text-3xl font-bold">{value}</span>
+        <span className="text-gray-500">{label}</span>
       </div>
-      <div className="bg-white shadow-md rounded-lg p-4">
-        <h3 className="text-lg font-bold text-gray-700">Total Bookings</h3>
-        <p className="text-2xl text-green-500">{totalBookings}</p>
-      </div>
-      <div className="bg-white shadow-md rounded-lg p-4">
-        <h3 className="text-lg font-bold text-gray-700">Total Complaints</h3>
-        <p className="text-2xl text-red-500">{totalComplaints}</p>
-      </div>
-      <div className="bg-white shadow-md rounded-lg p-4">
-        <h3 className="text-lg font-bold text-gray-700">Total Reviews</h3>
-        <p className="text-2xl text-yellow-500">{totalReviews}</p>
-      </div>
-    </div>
-  );
-};
+    ))}
+  </div>
+);
 
 export default DashboardStats;

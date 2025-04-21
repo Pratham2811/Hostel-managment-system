@@ -1,51 +1,27 @@
+// components/complaints/ComplaintForm.jsx
 import React, { useState } from 'react';
 
-const ComplaintForm = ({ onSubmit, initialValues }) => {
-  const [subject, setSubject] = useState(initialValues?.subject || '');
-  const [description, setDescription] = useState(initialValues?.description || '');
+const ComplaintForm = ({ onSubmit }) => {
+  const [form, setForm] = useState({ title: '', description: '', status: 'pending' });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ subject, description });
+    onSubmit(form);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="subject">
-          Subject
-        </label>
-        <input
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="subject"
-          type="text"
-          placeholder="Subject"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          required
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-          Description
-        </label>
-        <textarea
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="description"
-          placeholder="Describe your complaint..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-      </div>
-      <div className="flex items-center justify-between">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Submit Complaint
-        </button>
-      </div>
+    <form onSubmit={handleSubmit} className="space-y-4 p-6 bg-white rounded-xl shadow">
+      <input name="title" value={form.title} onChange={handleChange} placeholder="Complaint Title" className="input" />
+      <textarea name="description" value={form.description} onChange={handleChange} placeholder="Description" className="input h-24" />
+      <select name="status" value={form.status} onChange={handleChange} className="input">
+        <option value="pending">Pending</option>
+        <option value="resolved">Resolved</option>
+      </select>
+      <button type="submit" className="btn btn-primary">Submit Complaint</button>
     </form>
   );
 };

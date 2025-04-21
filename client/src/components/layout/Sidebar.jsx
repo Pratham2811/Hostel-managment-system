@@ -1,90 +1,30 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { HomeIcon, ClipboardListIcon, OfficeBuildingIcon } from '@heroicons/react/outline';
 
-const Sidebar = ({ isOpen }) => {
-  const { user } = useSelector(state => state.auth);
-  
-  // Define navigation based on user role
-  const isAdmin = user?.role === 'admin';
-  const isHostelOwner = user?.role === 'hostel_owner';
-  
+const links = [
+  { name: 'Dashboard', to: '/dashboard', icon: HomeIcon },
+  { name: 'Bookings', to: '/bookings', icon: ClipboardListIcon },
+  { name: 'Hostels', to: '/hostels', icon: OfficeBuildingIcon },
+];
+
+export default function Sidebar() {
   return (
-    <aside className={`app-sidebar ${isOpen ? 'open' : 'closed'}`}>
-      <div className="sidebar-content">
-        <nav className="sidebar-nav">
-          <ul>
-            <li>
-              <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-              </NavLink>
-            </li>
-            
-            {/* Hostel management - visible to admins and hostel owners */}
-            {(isAdmin || isHostelOwner) && (
-              <li>
-                <NavLink to="/hostels" className={({ isActive }) => isActive ? 'active' : ''}>
-                  <i className="fas fa-building"></i>
-                  <span>Hostels</span>
-                </NavLink>
-              </li>
-            )}
-            
-            {/* Room management - visible to admins and hostel owners */}
-            {(isAdmin || isHostelOwner) && (
-              <li>
-                <NavLink to="/rooms" className={({ isActive }) => isActive ? 'active' : ''}>
-                  <i className="fas fa-door-open"></i>
-                  <span>Rooms</span>
-                </NavLink>
-              </li>
-            )}
-            
-            {/* Bookings - visible to all users */}
-            <li>
-              <NavLink to="/bookings" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-calendar-check"></i>
-                <span>Bookings</span>
-              </NavLink>
-            </li>
-            
-            {/* Payments - visible to all users */}
-            <li>
-              <NavLink to="/payments/history" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-credit-card"></i>
-                <span>Payments</span>
-              </NavLink>
-            </li>
-            
-            {/* Reviews - visible to all users */}
-            <li>
-              <NavLink to="/reviews" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-star"></i>
-                <span>Reviews</span>
-              </NavLink>
-            </li>
-            
-            {/* Complaints - visible to all users */}
-            <li>
-              <NavLink to="/complaints" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-exclamation-circle"></i>
-                <span>Complaints</span>
-              </NavLink>
-            </li>
-            
-            {/* Settings - visible to all users */}
-            <li>
-              <NavLink to="/settings" className={({ isActive }) => isActive ? 'active' : ''}>
-                <i className="fas fa-cog"></i>
-                <span>Settings</span>
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <aside className="w-64 bg-white border-r">
+      <nav className="mt-10">
+        {links.map(({ name, to, icon: Icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) =>
+              `flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 ${isActive ? 'bg-gray-100 font-medium' : ''}`
+            }
+          >
+            <Icon className="h-5 w-5 mr-3" />
+            {name}
+          </NavLink>
+        ))}
+      </nav>
     </aside>
   );
-};
-
-export default Sidebar;
+}

@@ -1,15 +1,20 @@
+// components/dashboard/RecentBookings.jsx
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const RecentBookings = ({ bookings }) => {
+const RecentBookings = () => {
+  const { bookings } = useSelector((state) => state.bookings);
+  const recent = bookings.slice(-5).reverse();
+
   return (
-    <div className="bg-white shadow-md rounded-lg p-4">
-      <h2 className="text-xl font-bold text-gray-700 mb-4">Recent Bookings</h2>
-      <ul>
-        {bookings && bookings.map((booking) => (
-          <li key={booking._id} className="py-2 border-b border-gray-200">
-            <Link to={`/bookings/${booking._id}`} className="hover:text-blue-500">
-              Booking ID: {booking._id} - Check-in: {new Date(booking.checkInDate).toLocaleDateString()}
+    <div className="p-4 bg-white rounded-xl shadow mb-6">
+      <h2 className="text-xl font-semibold mb-4">Recent Bookings</h2>
+      <ul className="space-y-2">
+        {recent.map((b) => (
+          <li key={b.id}>
+            <Link to={`/bookings/${b.id}`} className="text-blue-600 hover:underline">
+              #{b.id} — {b.user}
             </Link>
           </li>
         ))}
